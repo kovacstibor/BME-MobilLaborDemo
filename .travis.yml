@@ -15,17 +15,17 @@ android:
   - sys-img-armeabi-v7a-android-21
 before_install:
   - yes | sdkmanager "platforms;android-28"
-  deploy:
-    provider: releases
-    apikey: $GITHUB_KEY
-    file: app/build/outputs/apk/release/app-release.apk
-    skip_cleanup: true
-    on:
+deploy:
+  provider: releases
+  apikey: $GITHUB_KEY
+  file: app/build/outputs/apk/release/app-release.apk
+  skip_cleanup: true
+  on:
     tags: true
-  notifications:
-    email:
+notifications:
+  email:
     recipients:
-    - kov.tibor95@gmail.com
+      - kov.tibor95@gmail.com
     on_success: always
     on_failure: always
 script: ./gradlew :app:build
